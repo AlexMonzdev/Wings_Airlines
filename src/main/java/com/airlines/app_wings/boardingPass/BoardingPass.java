@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "boarding_pass")
-public class BoardinPass {
+public class BoardingPass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
