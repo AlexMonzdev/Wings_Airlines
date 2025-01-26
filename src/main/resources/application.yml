@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: app_wings
+  profiles:
+    active: test
+  api:
+    endpoint: /api/v1
