@@ -15,7 +15,7 @@ public class OriginController {
         this.originService = originService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Origin>> getAllOrigins() {
         return ResponseEntity.ok(originService.getAllOrigins());
     }
@@ -27,7 +27,7 @@ public class OriginController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Origin> createOrigin(@RequestBody Origin origin) {
         Origin createOrigin = originService.createOrigin(origin);
         return ResponseEntity.ok(createOrigin);

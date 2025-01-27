@@ -16,7 +16,7 @@ public class DestinyController {
         this.destinyService = destinyService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Destiny>> getAllDestinies() {
         return ResponseEntity.ok(destinyService.getAllDestinies());
     }
@@ -28,7 +28,7 @@ public class DestinyController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Destiny> createDestiny(@RequestBody Destiny destiny) {
         Destiny createdDestiny = destinyService.createDestiny(destiny);
         return ResponseEntity.ok(createdDestiny);
