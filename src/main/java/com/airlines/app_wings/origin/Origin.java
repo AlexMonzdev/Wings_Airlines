@@ -16,9 +16,14 @@ public class Origin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String airport;
+
+    @Column(nullable = false)
     private String city;
-    private Long codCity;
+
+    @Column(name = "cod_city", nullable = false)
+    private String codCity;
 
 
 }

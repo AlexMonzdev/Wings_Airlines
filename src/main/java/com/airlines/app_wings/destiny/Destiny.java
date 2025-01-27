@@ -16,9 +16,13 @@ public class Destiny {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String airport;
-    private String city;
-    private Long codCity;
 
+    @Column(nullable = false)
+    private String city;
+
+    @Column(name = "cod_city", nullable = false)
+    private String codCity;
 
 }
