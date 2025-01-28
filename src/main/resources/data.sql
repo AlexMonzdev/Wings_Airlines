@@ -13,8 +13,8 @@ INSERT INTO destiny (id, airport, city, cod_city) VALUES (4, 'Sydney Kingsford S
 INSERT INTO destiny (id, airport, city, cod_city) VALUES (5, 'Toronto Pearson International Airport', 'Toronto', 'YYZ');
 
 
--- Insertar datos de prueba para la tabla journey_plan
-INSERT INTO journey_plan (id, local_departure_time, local_departurel_date, local_arrival_time, local_arrival_date, id_origin, id_destini)
+-- Insertar datos de prueba para la tabla itineray
+INSERT INTO itinerary (id, local_departure_time, local_departure_date, local_arrival_time, local_arrival_date, id_origin, id_destini)
 VALUES
 (1, '08:00:00', '2025-06-01', '12:30:00', '2025-06-01', 1, 2), -- Nueva York (JFK) -> Dubái (DXB)
 (2, '10:15:00', '2025-06-02', '14:45:00', '2025-06-02', 3, 4), -- Londres (LHR) -> Sídney (SYD)
@@ -27,4 +27,15 @@ VALUES
 (9, '05:30:00', '2025-06-09', '09:45:00', '2025-06-09', 4, 2), -- París (CDG) -> Los Ángeles (LAX)
 (10, '11:00:00', '2025-06-10', '15:30:00', '2025-06-10', 5, 4); -- Tokio (HND) -> Sídney (SYD)
 
+INSERT INTO flight (id, capacity_seats, booked_seats, id_itinerary, airplane_model, flight_number) VALUES
+(1, 180, 10, 1, 'Boeing 777', 'AA101'),
+(2, 200, 10, 2, 'Airbus A380', 'BA202'),
+(3, 160, 10, 3, 'Boeing 787', 'JL303'),
+(4, 220, 10, 4, 'Boeing 737', 'DL404'),
+(5, 250, 10, 5, 'Airbus A350', 'AF505'),
+(6, 190, 10, 6, 'Boeing 767', 'LH606'),
+(7, 210, 10, 7, 'Boeing 747', 'UA707'),
+(8, 170, 10, 8, 'Airbus A320', 'VS808'),
+(9, 230, 10, 9, 'Boeing 737 MAX', 'AC909'),
+(10, 260, 10, 10, 'Boeing 777X', 'QF1010');
 
