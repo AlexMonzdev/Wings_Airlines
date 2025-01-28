@@ -1,4 +1,4 @@
-package com.airlines.app_wings.journeyPlan;
+package com.airlines.app_wings.Itinerary;
 
 import com.airlines.app_wings.destiny.Destiny;
 import com.airlines.app_wings.origin.Origin;
@@ -14,15 +14,15 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "journey_plan")
-public class JourneyPlan {
+@Table(name = "itinerary")
+public class Itinerary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalTime localDepartureTime;
-    private LocalDate localDeparturelDate;
+    private LocalDate localDepartureDate;
 
     private LocalTime localArrivalTime;
     private LocalDate localArrivalDate;
@@ -43,20 +43,20 @@ public class JourneyPlan {
         this.id = id;
     }
 
-    public LocalTime getLocaldepartureTime() {
+    public LocalTime getLocalDepartureTime() {
         return localDepartureTime;
     }
 
-    public void setLocaldepartureTime(LocalTime localdepartureTime) {
-        this.localDepartureTime = localdepartureTime;
+    public void setLocalDepartureTime(LocalTime localDepartureTime) {
+        this.localDepartureTime = localDepartureTime;
     }
 
-    public LocalDate getLocaldeparturelDate() {
-        return localDeparturelDate;
+    public LocalDate getLocalDepartureDate() {
+        return localDepartureDate;
     }
 
-    public void setLocaldeparturelDate(LocalDate localdeparturelDate) {
-        this.localDeparturelDate = localdeparturelDate;
+    public void setLocalDepartureDate(LocalDate localDepartureDate) {
+        this.localDepartureDate = localDepartureDate;
     }
 
     public LocalTime getLocalArrivalTime() {
