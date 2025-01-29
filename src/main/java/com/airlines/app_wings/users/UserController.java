@@ -26,7 +26,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
-        Optional<Role> clientRole = roleService.findByRole("CUSTOMER");
+        Optional<Role> clientRole = roleService.findByRole("ROLE_CUSTOMER");
         if (clientRole.isEmpty()) {
             throw new RuntimeException("Role CUSTOMER not found");
         }
