@@ -24,8 +24,8 @@ public class Role {
     @Column(nullable = false)
     private String role;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "roles")
-    Set<User> users;
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "roles")
+//    Set<User> users;
 
 }

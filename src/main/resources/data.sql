@@ -39,3 +39,6 @@ INSERT INTO flight (id, capacity_seats, booked_seats, id_itinerary, airplane_mod
 (9, 230, 10, 9, 'Boeing 737 MAX', 'AC909'),
 (10, 260, 10, 10, 'Boeing 777X', 'QF1010');
 
+INSERT INTO roles (id, role) VALUES (1, 'ROLE_CUSTOMER');
+INSERT INTO roles (id, role) VALUES (2, 'ROLE_ADMIN');
+
