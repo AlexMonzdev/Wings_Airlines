@@ -2,6 +2,7 @@ package com.airlines.app_wings.boardingPass;
 
 import com.airlines.app_wings.flight.Flight;
 import com.airlines.app_wings.profiles.Profile;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,57 +24,12 @@ public class BoardingPass {
 
     @ManyToOne
     @JoinColumn(name = "id_profile", nullable = false)
+    @JsonBackReference
     private Profile profile;
 
     @ManyToOne
     @JoinColumn(name = "id_flight", nullable = false)
+    @JsonBackReference
     private Flight flight;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFlightClass() {
-        return flightClass;
-    }
-
-    public void setFlightClass(String flightClass) {
-        this.flightClass = flightClass;
-    }
-
-    public String getSeat() {
-        return seat;
-    }
-
-    public void setSeat(String seat) {
-        this.seat = seat;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public void setFlight(Flight flight) {
-        this.flight = flight;
-    }
 }
