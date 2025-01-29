@@ -30,7 +30,7 @@ public class Profile {
     private String phone;
     private String nationality;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_rol", nullable = false)
     private Role role;
 

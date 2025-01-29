@@ -1,5 +1,7 @@
 package com.airlines.app_wings.profiles;
 
+import com.airlines.app_wings.roles.Role;
+import com.airlines.app_wings.roles.RoleRepository;
 import com.airlines.app_wings.users.User;
 import com.airlines.app_wings.users.UserRepository;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,14 @@ public class ProfileService {
 
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public ProfileService(ProfileRepository profileRepository, UserRepository userRepository) {
+    public ProfileService(ProfileRepository profileRepository, UserRepository userRepository, RoleRepository roleRepository) {
         this.profileRepository = profileRepository;
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
+
 
     public List<Profile> getAllProfiles() {
         return profileRepository.findAll();
@@ -31,13 +36,32 @@ public class ProfileService {
     }
 
     public Profile createProfile(Profile profile) {
-        Optional<User> user = userRepository.findById(profile.getUser().getId());
-        if (user.isEmpty()) {
-            throw new RuntimeException("User not found with ID: " + profile.getUser().getId());
+        // Validar que el usuario no sea nulo y tenga un ID válido
+        if (profile.getUser() == null || profile.getUser().getId() == null) {
+            throw new IllegalArgumentException("El perfil debe estar asociado a un usuario válido.");
         }
-        profile.setUser(user.get());  // Asociar el perfil con el usuario
+
+        // Buscar el usuario por su ID
+        User user = userRepository.findById(profile.getUser().getId())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + profile.getUser().getId()));
+
+        // Validar que el rol no sea nulo
+        if (profile.getRole() == null || profile.getRole().getId() == null) {
+            throw new IllegalArgumentException("El perfil debe estar asociado a un rol válido.");
+        }
+
+        // Buscar el rol por su ID
+        Role role = roleRepository.findById(profile.getRole().getId())
+                .orElseThrow(() -> new RuntimeException("Rol no encontrado con ID: " + profile.getRole().getId()));
+
+        // Asociar el usuario y el rol al perfil
+        profile.setUser(user);
+        profile.setRole(role);
+
+        // Guardar el perfil
         return profileRepository.save(profile);
     }
+
 
     public Profile updateProfile(Long id, Profile profileDetails) {
         Profile profile = profileRepository.findById(id)
