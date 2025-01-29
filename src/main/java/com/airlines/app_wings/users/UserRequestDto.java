@@ -1,17 +1,20 @@
 package com.airlines.app_wings.users;
 
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public record UserRequestDto(
 
-        @NotNull(message = "Date cannot be null")
-        @FutureOrPresent(message = "Date must be in the present or future")
+//        @NotBlank(message = "El email no puede estar vacío")
+//        @Email(message = "El email debe tener un formato válido")
         String user,
-        @NotNull(message = "Date cannot be null")
-        @FutureOrPresent(message = "Date must be in the present or future")
+//        @NotBlank(message = "La contraseña no puede estar vacía")
+//        @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
+//        @Pattern(
+//                regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=]).{8,}$",
+//                message = "La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial"
+//        )
         String password
 
 ){
