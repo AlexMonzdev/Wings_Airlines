@@ -42,3 +42,12 @@ INSERT INTO flight (id, capacity_seats, booked_seats, id_itinerary, airplane_mod
 INSERT INTO roles (id, role) VALUES (1, 'ROLE_CUSTOMER');
 INSERT INTO roles (id, role) VALUES (2, 'ROLE_ADMIN');
 
+INSERT INTO users (id, username, password) VALUES
+(1, 'admin', '$2a$10$N9qo8uLOickgx2ZMRZo5i.PU.BxRNOEFA9mFo5iERlA0jVJjT9b2K'), -- 1234
+(2, 'cliente', '$2a$10$N9qo8uLOickgx2ZMRZo5i.PU.BxRNOEFA9mFo5iERlA0jVJjT9b2K'); -- 1234
+
+INSERT INTO roles_users (user_id, role_id) VALUES
+(1, 2), -- admin -> ROLE_ADMIN
+(2, 1); -- cliente -> ROLE_CUSTOMER
+
+
