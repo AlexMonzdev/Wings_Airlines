@@ -3,5 +3,5 @@ spring:
     name: app_wings
   profiles:
     active: test
-  api:
-    endpoint: /api/v1
+api:
+  endpoint: /api/v1

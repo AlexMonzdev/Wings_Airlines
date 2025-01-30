@@ -1,7 +1,5 @@
 server:
   port: 8080
-api:
-  endpoint: /api/v1
 spring:
   config:
     activate:

@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
@@ -27,8 +27,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody @Valid UserRequestDto userRequestDto) {

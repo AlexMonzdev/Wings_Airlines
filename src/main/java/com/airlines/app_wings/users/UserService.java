@@ -31,7 +31,6 @@ public class UserService {
         User user = new User();
         user.setUsername(userRequestDto.user());
         user.setPassword(passwordEncoder.encode(userRequestDto.password()));
-
         // Asegurar que la lista de roles no sea null
         user.setRoles(new HashSet<>());
 

@@ -4,16 +4,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Value("${api.endpoint}")
@@ -21,8 +24,7 @@ public class SecurityConfig {
 
     private JpaUserDetailsService jpaUserDetailsService;
 
-    public SecurityConfig(String apiEndpoint, JpaUserDetailsService jpaUserDetailsService) {
-        this.apiEndpoint = apiEndpoint;
+    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
         this.jpaUserDetailsService = jpaUserDetailsService;
     }
 
@@ -36,7 +38,8 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/register").permitAll() // Rutas públicas
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2/**")).permitAll()
+                        .requestMatchers("/home", apiEndpoint + "/register").permitAll()
                         .requestMatchers(apiEndpoint + "/login").authenticated() // 🔴 Requiere autenticación
                         .requestMatchers(apiEndpoint + "/admin/**").hasRole("ADMIN") // Solo Admins
                         .requestMatchers(apiEndpoint + "/user/**").hasRole("CUSTOMER") // Solo Usuarios
