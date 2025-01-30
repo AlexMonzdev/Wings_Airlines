@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -25,6 +27,8 @@ public class UserController {
         User registeredUser = userService.registerUser(userRequestDto);
         return ResponseEntity.ok(registeredUser);
     }
+
+
 
 //    @PutMapping("/{id}/role")
 //    public ResponseEntity<User> updateUserRole(@PathVariable Long id, @RequestParam String roleName) {
